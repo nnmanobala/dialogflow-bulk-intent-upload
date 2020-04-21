@@ -1,4 +1,4 @@
-package org.chatbot.util;
+package org.bulk_upload.util;
 
 import java.io.FileInputStream;
 import java.io.InputStream;

@@ -1,4 +1,4 @@
-package org.chatbot.util;
+package org.bulk_upload.util;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -15,7 +15,6 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 public class JsonWriter {
 
 	private Logger logger = LogManager.getLogger(JsonWriter.class);
-	String requestFilename, responseFilename;
 
 	public void printToFile(Object object, String filename, boolean isIntent) {
 
@@ -26,9 +25,9 @@ public class JsonWriter {
 			File directory = new File(intentFolder);
 			if (!directory.exists()) {
 				if (directory.mkdir()) {
-					System.out.println("Directory is created!");
+					logger.info("Directory is created!");
 				} else {
-					System.out.println("Failed to create directory!");
+					logger.error("Failed to create directory!");
 				}
 			}
 			jsonStr = Obj.writeValueAsString(object);

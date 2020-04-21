@@ -1,4 +1,4 @@
-package org.chatbot.intent;
+package org.bulk_upload.intent;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,9 +9,9 @@ import java.util.Properties;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.chatbot.util.ConfigManager;
-import org.chatbot.util.ExcelParser;
-import org.chatbot.util.ZipUtility;
+import org.bulk_upload.util.ConfigManager;
+import org.bulk_upload.util.ExcelParser;
+import org.bulk_upload.util.ZipUtility;
 
 public class Main {
 

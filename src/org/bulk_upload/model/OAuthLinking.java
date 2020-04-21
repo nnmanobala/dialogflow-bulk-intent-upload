@@ -1,4 +1,4 @@
-package org.chatbot.model;
+package org.bulk_upload.model;
 
 import java.util.HashMap;
 import java.util.Map;
