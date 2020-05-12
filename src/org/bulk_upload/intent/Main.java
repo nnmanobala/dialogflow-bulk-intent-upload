@@ -25,12 +25,13 @@ public class Main {
 		File outputFolder = new File(ConfigManager.config.getProperty("output.folder") + "//intents");
 		File agent = new File(ConfigManager.config.getProperty("output.folder") + "//agent.json");
 		File packageFile = new File(ConfigManager.config.getProperty("output.folder") + "//package.json");
-		List<File> listFiles = new ArrayList<File>();
-		listFiles.add(outputFolder);
-		listFiles.add(agent);
-		listFiles.add(packageFile);
-		directoryZipper.zip(listFiles, ConfigManager.config.getProperty("output.folder") + "//"
-				+ ConfigManager.config.getProperty("output.zip.name"));
+		/*
+		 * List<File> listFiles = new ArrayList<File>(); listFiles.add(outputFolder);
+		 * listFiles.add(agent); listFiles.add(packageFile);
+		 * directoryZipper.zip(listFiles,
+		 * ConfigManager.config.getProperty("output.folder") + "//" +
+		 * ConfigManager.config.getProperty("output.zip.name"));
+		 */
 		logger.info("Application has processed all data successfully!");
 	}
 }

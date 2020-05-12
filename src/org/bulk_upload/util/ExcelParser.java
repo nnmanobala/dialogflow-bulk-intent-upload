@@ -61,18 +61,7 @@ public class ExcelParser {
 						 * related questions are loaded. If all questions for an intent are loaded, then
 						 * the map will create its next intent, so it will not be empty.
 						 */
-						if (!intentMap.keySet().isEmpty()) {
-
-							Optional<Integer> optIntentNumber = intentMap.keySet().stream().findAny();
-
-							if (optIntentNumber.isPresent()) {
-								// Optional.get() returns the actual element
-								tempIntent = intentMap.get(optIntentNumber.get());
-								new JsonBuilder().buildAndWriteIntentJson(tempIntent);
-								intentMap.remove(tempIntent.getIntent());
-							}
-
-						}
+						writeToFileAndClearMap(intentMap);
 						newIntent = new Intent();
 						newIntent.addQuestion(question);
 						newIntent.setResponse(response);
@@ -83,16 +72,33 @@ public class ExcelParser {
 				}
 				isDataColumn = true;
 			}
+			writeToFileAndClearMap(intentMap);
 			myExcelBook.close();
 			new JsonBuilder().buildAndWriteAgentAndInfo();
 
-		} catch (FileNotFoundException e) {
+		} catch (
+
+		FileNotFoundException e) {
 			logger.info("Error encountered after processing row number: " + rowNumber + " and intent: " + intentNumber);
 			logger.error(e.getMessage());
 		} catch (IOException e) {
 			logger.info("Error encountered after processing row number: " + rowNumber + " and intent: " + intentNumber);
 			logger.error(e.getMessage());
 
+		}
+	}
+
+	void writeToFileAndClearMap(Map<Integer, Intent> intentMap) {
+
+		if (!intentMap.keySet().isEmpty()) {
+			Optional<Integer> optintentNumber = intentMap.keySet().stream().findAny();
+
+			if (optintentNumber.isPresent()) {
+				// Optional.get() returns the actual element
+				Intent tempIntent = intentMap.get(optintentNumber.get());
+				new JsonBuilder().buildAndWriteIntentJson(tempIntent);
+				intentMap.remove(tempIntent.getIntent());
+			}
 		}
 	}
 

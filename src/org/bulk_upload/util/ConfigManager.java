@@ -20,13 +20,16 @@ public class ConfigManager {
 			config.load(input);
 
 			// get the property value and print it out
-			System.out.println(config.getProperty("excel.file.path"));
-			System.out.println(config.getProperty("excel.sheet.name"));
-			System.out.println(config.getProperty("output.folder"));
-			System.out.println(config.getProperty("column.number.for.question"));
-			System.out.println(config.getProperty("column.number.for.intent"));
-			System.out.println(config.getProperty("column.number.for.response"));
-			System.out.println(config.getProperty("agent.name"));
+			logger.info("Configuration information from config.properties:");
+			logger.info(config.getProperty("excel.file.path"));
+			logger.info(config.getProperty("excel.sheet.name"));
+			logger.info(config.getProperty("output.folder"));
+			logger.info(config.getProperty("column.number.for.question"));
+			logger.info(config.getProperty("column.number.for.intent"));
+			logger.info(config.getProperty("column.number.for.response"));
+			logger.info(config.getProperty("agent.name"));
+			logger.info(config.getProperty("language"));
+			logger.info("Configuration information ends here.");
 
 		} catch (Exception ex) {
 			logger.error(ex.getMessage());

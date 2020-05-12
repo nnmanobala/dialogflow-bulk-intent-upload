@@ -30,7 +30,8 @@ public class JsonBuilder {
 
 		// Writing to file
 		JsonWriter jsonWriter = new JsonWriter();
-		jsonWriter.printToFile(schema.getUserRequests(), intent.getIntent() + "_usersays_en.json", true);
+		jsonWriter.printToFile(schema.getUserRequests(),
+				intent.getIntent() + "_usersays_" + ConfigManager.config.getProperty("language") + ".json", true);
 		jsonWriter.printToFile(schema.getServerResponse(), intent.getIntent() + ".json", true);
 		logger.info("Intent " + intent.getIntent() + " has " + intent.getQuestion().size() + " questions.\n");
 	}
@@ -54,6 +55,7 @@ public class JsonBuilder {
 		List<Message> messages = new ArrayList<Message>();
 		Message message = new Message();
 		message.setSpeech(intent.getResponse());
+		message.setLang(ConfigManager.config.getProperty("language"));
 		messages.add(message);
 		Response response = new Response();
 		response.setMessages(messages);
@@ -73,6 +75,7 @@ public class JsonBuilder {
 		// Building agent.json and package.json files
 		JsonWriter jsonWriter = new JsonWriter();
 		Agent agent = new Agent();
+		agent.setLanguage(ConfigManager.config.getProperty("language"));
 		Info versionNumber = new Info();
 		agent.getGoogleAssistant().setProject(ConfigManager.config.getProperty("agent.name"));
 		jsonWriter.printToFile(agent, "agent.json", false);
